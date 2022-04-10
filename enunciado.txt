@@ -1,0 +1,23 @@
+Práctica 3
+
+Construir un intérprete de expresiones de cálculo matemático.
+
+ 
+
+Orientación
+
+Se pide una herramienta que pueda interpretar expresiones y ficheros con secuencias de expresiones de la forma:
+
+x = 3;
+
+y = 2 * pi * x;
+
+z = x * sin (y + pi/6);
+
+ 
+
+Como resultado de la ejecución se presentarán los valores que toman las distintas variables que aparecen en el fichero. El intérprete deberá incorporar algunas de las operaciones aritméticas y funciones propias de una calculadora científica (sin(),cos(),log(),exp(),…), aplicadas a números tanto enteros como reales en notación científica.
+
+Este intérprete dispondrá de un juego de comandos que facilitarán su uso, y que permitirán solicitar ayuda, cargar ficheros de expresiones, imprimir el contenido de las variables definidas en el espacio de trabajo, eliminar el propio espacio de trabajo o salir del programa, entre otros.
+
+La herramienta puede realizarse con una etapa de análisis léxico y una etapa de análisis sintáctico, haciendo uso de herramientas como flex y bison. Al análisis sintáctico es necesario añadirle aquellas acciones semánticas que permitan realizar las operaciones descritas. Como no vamos a sintetizar código ejecutable, podemos utilizar una tabla de símbolos para almacenar las variables que aparecen en el fichero de entrada, y los valores que toman a lo largo del cálculo.
