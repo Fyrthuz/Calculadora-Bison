@@ -79,9 +79,11 @@
 extern int yylex();
 void yyerror(char* s);
 void verAyuda();
+//variable to control the print
+extern int print;
 
 
-#line 85 "analizadorSintactico.tab.c"
+#line 87 "analizadorSintactico.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -137,18 +139,21 @@ extern int yydebug;
     AYUDA = 263,
     LEER = 264,
     CLEAR = 265,
-    ASIGNACION = 266,
-    SUMA_ASIGNACION = 267,
-    MAS_MAS = 268,
-    MENOS_MENOS = 269,
-    RESTA_ASIGNACION = 270,
-    MULT_ASIGNACION = 271,
-    DIV_ASIGNACION = 272,
-    DESIGUALDAD = 273,
-    IGUALDAD = 274,
-    MENOR_IGUAL = 275,
-    MAYOR_IGUAL = 276,
-    NEG = 277
+    IMPRIMIR = 266,
+    ON = 267,
+    OFF = 268,
+    ASIGNACION = 269,
+    SUMA_ASIGNACION = 270,
+    MAS_MAS = 271,
+    MENOS_MENOS = 272,
+    RESTA_ASIGNACION = 273,
+    MULT_ASIGNACION = 274,
+    DIV_ASIGNACION = 275,
+    DESIGUALDAD = 276,
+    IGUALDAD = 277,
+    MENOR_IGUAL = 278,
+    MAYOR_IGUAL = 279,
+    NEG = 280
   };
 #endif
 
@@ -156,12 +161,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 16 "analizadorSintactico.y"
+#line 18 "analizadorSintactico.y"
 
 double num;
 char *lexema;
 
-#line 165 "analizadorSintactico.tab.c"
+#line 170 "analizadorSintactico.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -480,19 +485,19 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   215
+#define YYLAST   219
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  36
+#define YYNTOKENS  39
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  9
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  43
+#define YYNRULES  45
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  72
+#define YYNSTATES  75
 
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   277
+#define YYMAXUTOK   280
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -505,15 +510,15 @@ union yyalloc
 static const yytype_int8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      31,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      34,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,    27,     2,     2,
-      33,    34,    25,    23,    35,    24,     2,    26,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,    32,
-      28,     2,    29,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,    30,     2,     2,
+      36,    37,    28,    26,    38,    27,     2,    29,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,    35,
+      31,     2,    32,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,    22,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,    25,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -531,18 +536,19 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    21,    30
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
+      33
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    74,    74,    75,    79,    80,    81,    82,    86,    87,
-      90,    91,    92,    93,    94,    95,    96,    97,    98,    99,
-     103,   106,   110,   114,   118,   122,   126,   130,   136,   140,
-     144,   148,   152,   156,   161,   162,   163,   164,   165,   166,
-     167,   169,   172,   175
+       0,    79,    79,    80,    84,    85,    86,    87,    91,    92,
+      95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
+     105,   106,   109,   112,   116,   120,   124,   128,   132,   136,
+     142,   146,   150,   154,   158,   162,   167,   168,   169,   170,
+     171,   172,   173,   175,   178,   181
 };
 #endif
 
@@ -552,13 +558,13 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "NUM", "IDENTIFICADOR", "ARCHIVO",
-  "VARIABLES", "TABLA", "AYUDA", "LEER", "CLEAR", "ASIGNACION",
-  "SUMA_ASIGNACION", "MAS_MAS", "MENOS_MENOS", "RESTA_ASIGNACION",
-  "MULT_ASIGNACION", "DIV_ASIGNACION", "DESIGUALDAD", "IGUALDAD",
-  "MENOR_IGUAL", "MAYOR_IGUAL", "'^'", "'+'", "'-'", "'*'", "'/'", "'%'",
-  "'<'", "'>'", "NEG", "'\\n'", "';'", "'('", "')'", "','", "$accept",
-  "input", "line", "expresion", "limpiar", "igualacion", "comparacion",
-  "operacion", "funcion", YY_NULLPTR
+  "VARIABLES", "TABLA", "AYUDA", "LEER", "CLEAR", "IMPRIMIR", "ON", "OFF",
+  "ASIGNACION", "SUMA_ASIGNACION", "MAS_MAS", "MENOS_MENOS",
+  "RESTA_ASIGNACION", "MULT_ASIGNACION", "DIV_ASIGNACION", "DESIGUALDAD",
+  "IGUALDAD", "MENOR_IGUAL", "MAYOR_IGUAL", "'^'", "'+'", "'-'", "'*'",
+  "'/'", "'%'", "'<'", "'>'", "NEG", "'\\n'", "';'", "'('", "')'", "','",
+  "$accept", "input", "line", "expresion", "limpiar", "igualacion",
+  "comparacion", "operacion", "funcion", YY_NULLPTR
 };
 #endif
 
@@ -569,12 +575,12 @@ static const yytype_int16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
-     275,   276,    94,    43,    45,    42,    47,    37,    60,    62,
-     277,    10,    59,    40,    41,    44
+     275,   276,   277,   278,   279,    94,    43,    45,    42,    47,
+      37,    60,    62,   280,    10,    59,    40,    41,    44
 };
 # endif
 
-#define YYPACT_NINF (-15)
+#define YYPACT_NINF (-33)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -588,14 +594,14 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     -15,    36,   -15,   -15,   -15,    61,   -15,   -15,   -15,    -3,
-     -15,    47,    47,   -15,    47,   -15,   115,   -15,   -15,   -15,
-     -15,   -15,    47,    47,   -15,   -15,    47,    47,    47,    47,
-     -15,   -15,   -15,    81,    47,    47,    47,    47,    47,    47,
-      47,    47,    47,    47,    47,    47,   -15,   -12,   130,   -15,
-     -15,   -15,   -15,    63,   -15,    -6,     0,   -15,   -10,   130,
-     142,   154,   166,   170,   182,   186,   -14,   -15,   -15,    47,
-      98,   -15
+     -33,    37,   -33,   -33,   -33,    62,   -33,   -33,   -33,    16,
+     -33,     1,    48,    48,   -33,    48,   -33,   116,   -33,   -33,
+     -33,   -33,   -33,    48,    48,   -33,   -33,    48,    48,    48,
+      48,   -33,   -33,   -33,   -33,   -33,    82,    48,    48,    48,
+      48,    48,    48,    48,    48,    48,    48,    48,    48,   -33,
+     -32,   131,   -33,   -33,   -33,   -33,    64,   -33,    -3,    -1,
+     -33,   -13,   131,   143,   155,   167,   171,   183,   187,   -17,
+     -33,   -33,    48,    99,   -33
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -604,25 +610,25 @@ static const yytype_int16 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        2,     0,     1,     7,     8,     9,    10,    11,    12,     0,
-      20,     0,     0,     4,     0,     3,     0,    18,    13,    14,
-      15,    16,     0,     0,    22,    23,     0,     0,     0,     0,
-      19,    40,    39,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     5,     0,    21,    24,
-      25,    26,    27,     0,    17,    32,    33,    30,    31,    43,
-      34,    35,    36,    37,    38,    28,    29,     6,    41,     0,
-       0,    42
+      22,     0,     0,     0,     4,     0,     3,     0,    18,    13,
+      14,    15,    16,     0,     0,    24,    25,     0,     0,     0,
+       0,    19,    20,    21,    42,    41,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     5,
+       0,    23,    26,    27,    28,    29,     0,    17,    34,    35,
+      32,    33,    45,    36,    37,    38,    39,    40,    30,    31,
+       6,    43,     0,     0,    44
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -15,   -15,   -15,   -11,   -15,   -15,   -15,   -15,   -15
+     -33,   -33,   -33,   -12,   -33,   -33,   -33,   -33,   -33
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1,    15,    16,    17,    18,    19,    20,    21
+      -1,     1,    16,    17,    18,    19,    20,    21,    22
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -630,78 +636,78 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      31,    32,    30,    33,    34,    35,    36,    37,    34,    35,
-      36,    48,    49,    35,    36,    50,    51,    52,    53,    67,
-      36,     0,     0,    55,    56,    57,    58,    59,    60,    61,
-      62,    63,    64,    65,    66,     0,     2,     3,     0,     4,
-       5,     0,     6,     7,     8,     9,    10,     0,     0,     0,
-       4,     5,     0,     6,     7,     8,     9,    10,    70,    11,
-      12,     0,     0,     0,     0,     0,     0,    13,     0,    14,
-      11,    12,    22,    23,    24,    25,    26,    27,    28,     0,
-      14,    34,    35,    36,    37,    38,    39,    40,    41,    42,
-      43,    44,    45,     0,    29,     0,     0,    68,    69,    34,
-      35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
-      45,     0,     0,     0,     0,    54,    34,    35,    36,    37,
-      38,    39,    40,    41,    42,    43,    44,    45,     0,     0,
-       0,     0,    71,    34,    35,    36,    37,    38,    39,    40,
-      41,    42,    43,    44,    45,     0,    46,    47,    34,    35,
-      36,    37,    38,    39,    40,    41,    42,    43,    44,    45,
-      34,    35,    36,    37,     0,     0,    40,    41,    42,    43,
-      44,    45,    34,    35,    36,    37,     0,     0,     0,    41,
-      42,    43,    44,    45,    34,    35,    36,    37,    34,    35,
-      36,    37,    42,    43,    44,    45,     0,    43,    44,    45,
-      34,    35,    36,    37,    34,    35,    36,    37,     0,     0,
-      44,    45,     0,     0,     0,    45
+      34,    35,    70,    36,    37,    38,    39,    40,    37,    38,
+      39,    51,    52,    32,    33,    53,    54,    55,    56,    38,
+      39,    31,    39,     0,     0,    58,    59,    60,    61,    62,
+      63,    64,    65,    66,    67,    68,    69,     2,     3,     0,
+       4,     5,     0,     6,     7,     8,     9,    10,    11,     0,
+       0,     4,     5,     0,     6,     7,     8,     9,    10,    11,
+      73,     0,     0,    12,    13,     0,     0,     0,     0,     0,
+       0,    14,     0,    15,    12,    13,    23,    24,    25,    26,
+      27,    28,    29,     0,    15,    37,    38,    39,    40,    41,
+      42,    43,    44,    45,    46,    47,    48,     0,    30,     0,
+       0,    71,    72,    37,    38,    39,    40,    41,    42,    43,
+      44,    45,    46,    47,    48,     0,     0,     0,     0,    57,
+      37,    38,    39,    40,    41,    42,    43,    44,    45,    46,
+      47,    48,     0,     0,     0,     0,    74,    37,    38,    39,
+      40,    41,    42,    43,    44,    45,    46,    47,    48,     0,
+      49,    50,    37,    38,    39,    40,    41,    42,    43,    44,
+      45,    46,    47,    48,    37,    38,    39,    40,     0,     0,
+      43,    44,    45,    46,    47,    48,    37,    38,    39,    40,
+       0,     0,     0,    44,    45,    46,    47,    48,    37,    38,
+      39,    40,    37,    38,    39,    40,    45,    46,    47,    48,
+       0,    46,    47,    48,    37,    38,    39,    40,    37,    38,
+      39,    40,     0,     0,    47,    48,     0,     0,     0,    48
 };
 
 static const yytype_int8 yycheck[] =
 {
-      11,    12,     5,    14,    18,    19,    20,    21,    18,    19,
-      20,    22,    23,    19,    20,    26,    27,    28,    29,    31,
-      20,    -1,    -1,    34,    35,    36,    37,    38,    39,    40,
-      41,    42,    43,    44,    45,    -1,     0,     1,    -1,     3,
-       4,    -1,     6,     7,     8,     9,    10,    -1,    -1,    -1,
-       3,     4,    -1,     6,     7,     8,     9,    10,    69,    23,
-      24,    -1,    -1,    -1,    -1,    -1,    -1,    31,    -1,    33,
-      23,    24,    11,    12,    13,    14,    15,    16,    17,    -1,
-      33,    18,    19,    20,    21,    22,    23,    24,    25,    26,
-      27,    28,    29,    -1,    33,    -1,    -1,    34,    35,    18,
-      19,    20,    21,    22,    23,    24,    25,    26,    27,    28,
-      29,    -1,    -1,    -1,    -1,    34,    18,    19,    20,    21,
-      22,    23,    24,    25,    26,    27,    28,    29,    -1,    -1,
-      -1,    -1,    34,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    -1,    31,    32,    18,    19,
-      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
-      18,    19,    20,    21,    -1,    -1,    24,    25,    26,    27,
-      28,    29,    18,    19,    20,    21,    -1,    -1,    -1,    25,
-      26,    27,    28,    29,    18,    19,    20,    21,    18,    19,
-      20,    21,    26,    27,    28,    29,    -1,    27,    28,    29,
-      18,    19,    20,    21,    18,    19,    20,    21,    -1,    -1,
-      28,    29,    -1,    -1,    -1,    29
+      12,    13,    34,    15,    21,    22,    23,    24,    21,    22,
+      23,    23,    24,    12,    13,    27,    28,    29,    30,    22,
+      23,     5,    23,    -1,    -1,    37,    38,    39,    40,    41,
+      42,    43,    44,    45,    46,    47,    48,     0,     1,    -1,
+       3,     4,    -1,     6,     7,     8,     9,    10,    11,    -1,
+      -1,     3,     4,    -1,     6,     7,     8,     9,    10,    11,
+      72,    -1,    -1,    26,    27,    -1,    -1,    -1,    -1,    -1,
+      -1,    34,    -1,    36,    26,    27,    14,    15,    16,    17,
+      18,    19,    20,    -1,    36,    21,    22,    23,    24,    25,
+      26,    27,    28,    29,    30,    31,    32,    -1,    36,    -1,
+      -1,    37,    38,    21,    22,    23,    24,    25,    26,    27,
+      28,    29,    30,    31,    32,    -1,    -1,    -1,    -1,    37,
+      21,    22,    23,    24,    25,    26,    27,    28,    29,    30,
+      31,    32,    -1,    -1,    -1,    -1,    37,    21,    22,    23,
+      24,    25,    26,    27,    28,    29,    30,    31,    32,    -1,
+      34,    35,    21,    22,    23,    24,    25,    26,    27,    28,
+      29,    30,    31,    32,    21,    22,    23,    24,    -1,    -1,
+      27,    28,    29,    30,    31,    32,    21,    22,    23,    24,
+      -1,    -1,    -1,    28,    29,    30,    31,    32,    21,    22,
+      23,    24,    21,    22,    23,    24,    29,    30,    31,    32,
+      -1,    30,    31,    32,    21,    22,    23,    24,    21,    22,
+      23,    24,    -1,    -1,    31,    32,    -1,    -1,    -1,    32
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    37,     0,     1,     3,     4,     6,     7,     8,     9,
-      10,    23,    24,    31,    33,    38,    39,    40,    41,    42,
-      43,    44,    11,    12,    13,    14,    15,    16,    17,    33,
-       5,    39,    39,    39,    18,    19,    20,    21,    22,    23,
-      24,    25,    26,    27,    28,    29,    31,    32,    39,    39,
-      39,    39,    39,    39,    34,    39,    39,    39,    39,    39,
-      39,    39,    39,    39,    39,    39,    39,    31,    34,    35,
-      39,    34
+       0,    40,     0,     1,     3,     4,     6,     7,     8,     9,
+      10,    11,    26,    27,    34,    36,    41,    42,    43,    44,
+      45,    46,    47,    14,    15,    16,    17,    18,    19,    20,
+      36,     5,    12,    13,    42,    42,    42,    21,    22,    23,
+      24,    25,    26,    27,    28,    29,    30,    31,    32,    34,
+      35,    42,    42,    42,    42,    42,    42,    37,    42,    42,
+      42,    42,    42,    42,    42,    42,    42,    42,    42,    42,
+      34,    37,    38,    42,    37
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    36,    37,    37,    38,    38,    38,    38,    39,    39,
-      39,    39,    39,    39,    39,    39,    39,    39,    39,    39,
-      40,    41,    41,    41,    41,    41,    41,    41,    42,    42,
-      42,    42,    42,    42,    43,    43,    43,    43,    43,    43,
-      43,    44,    44,    44
+       0,    39,    40,    40,    41,    41,    41,    41,    42,    42,
+      42,    42,    42,    42,    42,    42,    42,    42,    42,    42,
+      42,    42,    43,    44,    44,    44,    44,    44,    44,    44,
+      45,    45,    45,    45,    45,    45,    46,    46,    46,    46,
+      46,    46,    46,    47,    47,    47
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -709,9 +715,9 @@ static const yytype_int8 yyr2[] =
 {
        0,     2,     0,     2,     1,     2,     3,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     3,     1,     2,
-       1,     3,     2,     2,     3,     3,     3,     3,     3,     3,
-       3,     3,     3,     3,     3,     3,     3,     3,     3,     2,
-       2,     4,     6,     3
+       2,     2,     1,     3,     2,     2,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     3,     3,     3,     3,
+       3,     2,     2,     4,     6,     3
 };
 
 
@@ -1407,178 +1413,172 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 74 "analizadorSintactico.y"
-              {printf(">>>>");}
-#line 1413 "analizadorSintactico.tab.c"
-    break;
-
-  case 5:
-#line 80 "analizadorSintactico.y"
-                        {printf("\n>>>>");}
+#line 79 "analizadorSintactico.y"
+              {printf(">>>>");activarimpresion();}
 #line 1419 "analizadorSintactico.tab.c"
     break;
 
-  case 6:
-#line 81 "analizadorSintactico.y"
-                                 {if(!isnan((yyvsp[-2].num))){printf("%lf",(yyvsp[-2].num));}printf("\n>>>>");}
+  case 5:
+#line 85 "analizadorSintactico.y"
+                        {printf("\n>>>>");}
 #line 1425 "analizadorSintactico.tab.c"
     break;
 
-  case 7:
-#line 82 "analizadorSintactico.y"
-                   {yyclearin;printf(">>>>");}
+  case 6:
+#line 86 "analizadorSintactico.y"
+                                 {if(!isnan((yyvsp[-2].num))){if(print){printf("%lf",(yyvsp[-2].num));}printf("\n>>>>");}}
 #line 1431 "analizadorSintactico.tab.c"
     break;
 
-  case 8:
-#line 86 "analizadorSintactico.y"
-                  {(yyval.num) = (yyvsp[0].num);}
+  case 7:
+#line 87 "analizadorSintactico.y"
+                   {yyclearin;if(print){printf(">>>>");}}
 #line 1437 "analizadorSintactico.tab.c"
     break;
 
+  case 8:
+#line 91 "analizadorSintactico.y"
+                  {(yyval.num) = (yyvsp[0].num);}
+#line 1443 "analizadorSintactico.tab.c"
+    break;
+
   case 9:
-#line 87 "analizadorSintactico.y"
+#line 92 "analizadorSintactico.y"
                               {if(existe_id((yyvsp[0].lexema),ID) || existe_id((yyvsp[0].lexema),CONST)){
               (yyval.num) = recupera_valor((yyvsp[0].lexema));
               }else {yyerror("Variable sin inicializar");(yyval.num)=NAN;}free((yyvsp[0].lexema));}
-#line 1445 "analizadorSintactico.tab.c"
-    break;
-
-  case 10:
-#line 90 "analizadorSintactico.y"
-                          {imprimirVariables();}
 #line 1451 "analizadorSintactico.tab.c"
     break;
 
-  case 11:
-#line 91 "analizadorSintactico.y"
-                      {imprimirTabla();}
+  case 10:
+#line 95 "analizadorSintactico.y"
+                          {imprimirVariables();}
 #line 1457 "analizadorSintactico.tab.c"
     break;
 
-  case 12:
-#line 92 "analizadorSintactico.y"
-                      {verAyuda();}
+  case 11:
+#line 96 "analizadorSintactico.y"
+                      {imprimirTabla();}
 #line 1463 "analizadorSintactico.tab.c"
     break;
 
-  case 17:
+  case 12:
 #line 97 "analizadorSintactico.y"
-                                  {(yyval.num) = (yyvsp[-1].num);}
+                      {verAyuda();}
 #line 1469 "analizadorSintactico.tab.c"
     break;
 
-  case 18:
-#line 98 "analizadorSintactico.y"
-                        {(yyval.num)=NAN;}
+  case 17:
+#line 102 "analizadorSintactico.y"
+                                  {(yyval.num) = (yyvsp[-1].num);}
 #line 1475 "analizadorSintactico.tab.c"
     break;
 
-  case 19:
-#line 99 "analizadorSintactico.y"
-                             {printf("Ejecutando script %s\n",(yyvsp[0].lexema));leer((yyvsp[0].lexema));free((yyvsp[0].lexema));}
+  case 18:
+#line 103 "analizadorSintactico.y"
+                        {(yyval.num)=NAN;}
 #line 1481 "analizadorSintactico.tab.c"
     break;
 
-  case 20:
-#line 103 "analizadorSintactico.y"
-                {restauraEstado();}
+  case 19:
+#line 104 "analizadorSintactico.y"
+                             {printf("Ejecutando script %s\n",(yyvsp[0].lexema));leer((yyvsp[0].lexema));free((yyvsp[0].lexema));}
 #line 1487 "analizadorSintactico.tab.c"
+    break;
+
+  case 20:
+#line 105 "analizadorSintactico.y"
+                            {printf("Activando impresión\n");activarimpresion();}
+#line 1493 "analizadorSintactico.tab.c"
     break;
 
   case 21:
 #line 106 "analizadorSintactico.y"
-                                               {if(!existe_id((yyvsp[-2].lexema),CONST)){
-                                                  insertar_id((yyvsp[-2].lexema),(yyvsp[0].num));
-                                                  (yyval.num) = (yyvsp[0].num);
-                                                }else yyerror("No se puede modificar una constante");free((yyvsp[-2].lexema));}
-#line 1496 "analizadorSintactico.tab.c"
+                             {printf("Desactivando impresión\n");desactivarimpresion();}
+#line 1499 "analizadorSintactico.tab.c"
     break;
 
   case 22:
-#line 110 "analizadorSintactico.y"
-                                  {if(existe_id((yyvsp[-1].lexema),ID)){
-                                    insertar_id((yyvsp[-1].lexema),recupera_valor((yyvsp[-1].lexema))+1);
-                                    (yyval.num) = recupera_valor((yyvsp[-1].lexema));
-                                  }else yyerror("Variable no inicializada");free((yyvsp[-1].lexema));}
+#line 109 "analizadorSintactico.y"
+                {restauraEstado();}
 #line 1505 "analizadorSintactico.tab.c"
     break;
 
   case 23:
-#line 114 "analizadorSintactico.y"
-                                      {if(existe_id((yyvsp[-1].lexema),ID)){
-                                    insertar_id((yyvsp[-1].lexema),recupera_valor((yyvsp[-1].lexema))-1);
-                                    (yyval.num) = recupera_valor((yyvsp[-1].lexema));
-                                  }else yyerror("Variable no inicializada");free((yyvsp[-1].lexema));}
+#line 112 "analizadorSintactico.y"
+                                               {if(!existe_id((yyvsp[-2].lexema),CONST)){
+                                                  insertar_id((yyvsp[-2].lexema),(yyvsp[0].num));
+                                                  (yyval.num) = (yyvsp[0].num);
+                                                }else yyerror("No se puede modificar una constante");free((yyvsp[-2].lexema));}
 #line 1514 "analizadorSintactico.tab.c"
     break;
 
   case 24:
-#line 118 "analizadorSintactico.y"
-                                                    {if(existe_id((yyvsp[-2].lexema),ID)){
-                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))+(yyvsp[0].num));
-                                    (yyval.num) = recupera_valor((yyvsp[-2].lexema));
-                                  }else yyerror("Variable no inicializada");free((yyvsp[-2].lexema));}
+#line 116 "analizadorSintactico.y"
+                                  {if(existe_id((yyvsp[-1].lexema),ID)){
+                                    insertar_id((yyvsp[-1].lexema),recupera_valor((yyvsp[-1].lexema))+1);
+                                    (yyval.num) = recupera_valor((yyvsp[-1].lexema));
+                                  }else yyerror("Variable no inicializada");free((yyvsp[-1].lexema));}
 #line 1523 "analizadorSintactico.tab.c"
     break;
 
   case 25:
-#line 122 "analizadorSintactico.y"
-                                                     {if(existe_id((yyvsp[-2].lexema),ID)){
-                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))-(yyvsp[0].num));
-                                    (yyval.num) = recupera_valor((yyvsp[-2].lexema));
-                                  }else yyerror("Variable no inicializada");free((yyvsp[-2].lexema));}
+#line 120 "analizadorSintactico.y"
+                                      {if(existe_id((yyvsp[-1].lexema),ID)){
+                                    insertar_id((yyvsp[-1].lexema),recupera_valor((yyvsp[-1].lexema))-1);
+                                    (yyval.num) = recupera_valor((yyvsp[-1].lexema));
+                                  }else yyerror("Variable no inicializada");free((yyvsp[-1].lexema));}
 #line 1532 "analizadorSintactico.tab.c"
     break;
 
   case 26:
-#line 126 "analizadorSintactico.y"
+#line 124 "analizadorSintactico.y"
                                                     {if(existe_id((yyvsp[-2].lexema),ID)){
-                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))*(yyvsp[0].num));
+                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))+(yyvsp[0].num));
                                     (yyval.num) = recupera_valor((yyvsp[-2].lexema));
                                   }else yyerror("Variable no inicializada");free((yyvsp[-2].lexema));}
 #line 1541 "analizadorSintactico.tab.c"
     break;
 
   case 27:
-#line 130 "analizadorSintactico.y"
-                                                   {if(existe_id((yyvsp[-2].lexema),ID)){
-                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))/(yyvsp[0].num));
+#line 128 "analizadorSintactico.y"
+                                                     {if(existe_id((yyvsp[-2].lexema),ID)){
+                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))-(yyvsp[0].num));
                                     (yyval.num) = recupera_valor((yyvsp[-2].lexema));
                                   }else yyerror("Variable no inicializada");free((yyvsp[-2].lexema));}
 #line 1550 "analizadorSintactico.tab.c"
     break;
 
   case 28:
-#line 136 "analizadorSintactico.y"
-                                     {if((yyvsp[-2].num)<(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
-                                    }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
-                                    yyerror("Error sintáctico en la igualdad");
-                                    }(yyval.num)=NAN;}
+#line 132 "analizadorSintactico.y"
+                                                    {if(existe_id((yyvsp[-2].lexema),ID)){
+                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))*(yyvsp[0].num));
+                                    (yyval.num) = recupera_valor((yyvsp[-2].lexema));
+                                  }else yyerror("Variable no inicializada");free((yyvsp[-2].lexema));}
 #line 1559 "analizadorSintactico.tab.c"
     break;
 
   case 29:
-#line 140 "analizadorSintactico.y"
-                                       {if((yyvsp[-2].num)>(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
-                                      }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
-                                      yyerror("Error sintáctico en la igualdad");
-                                      }(yyval.num)=NAN;}
+#line 136 "analizadorSintactico.y"
+                                                   {if(existe_id((yyvsp[-2].lexema),ID)){
+                                    insertar_id((yyvsp[-2].lexema),recupera_valor((yyvsp[-2].lexema))/(yyvsp[0].num));
+                                    (yyval.num) = recupera_valor((yyvsp[-2].lexema));
+                                  }else yyerror("Variable no inicializada");free((yyvsp[-2].lexema));}
 #line 1568 "analizadorSintactico.tab.c"
     break;
 
   case 30:
-#line 144 "analizadorSintactico.y"
-                                               {if((yyvsp[-2].num)<=(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
-                                      }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
-                                      yyerror("Error sintáctico en la igualdad");
-                                      }(yyval.num)=NAN;}
+#line 142 "analizadorSintactico.y"
+                                     {if((yyvsp[-2].num)<(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
+                                    }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
+                                    yyerror("Error sintáctico en la igualdad");
+                                    }(yyval.num)=NAN;}
 #line 1577 "analizadorSintactico.tab.c"
     break;
 
   case 31:
-#line 148 "analizadorSintactico.y"
-                                               {if((yyvsp[-2].num)>=(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
+#line 146 "analizadorSintactico.y"
+                                       {if((yyvsp[-2].num)>(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
                                       }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
                                       yyerror("Error sintáctico en la igualdad");
                                       }(yyval.num)=NAN;}
@@ -1586,8 +1586,8 @@ yyreduce:
     break;
 
   case 32:
-#line 152 "analizadorSintactico.y"
-                                               {if((yyvsp[-2].num)!=(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
+#line 150 "analizadorSintactico.y"
+                                               {if((yyvsp[-2].num)<=(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
                                       }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
                                       yyerror("Error sintáctico en la igualdad");
                                       }(yyval.num)=NAN;}
@@ -1595,8 +1595,8 @@ yyreduce:
     break;
 
   case 33:
-#line 156 "analizadorSintactico.y"
-                                            {if(fabs((yyvsp[-2].num)-(yyvsp[0].num))<=0.00001 && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
+#line 154 "analizadorSintactico.y"
+                                               {if((yyvsp[-2].num)>=(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
                                       }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
                                       yyerror("Error sintáctico en la igualdad");
                                       }(yyval.num)=NAN;}
@@ -1604,73 +1604,91 @@ yyreduce:
     break;
 
   case 34:
-#line 161 "analizadorSintactico.y"
-                                  {(yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num);}
-#line 1610 "analizadorSintactico.tab.c"
+#line 158 "analizadorSintactico.y"
+                                               {if((yyvsp[-2].num)!=(yyvsp[0].num) && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
+                                      }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
+                                      yyerror("Error sintáctico en la igualdad");
+                                      }(yyval.num)=NAN;}
+#line 1613 "analizadorSintactico.tab.c"
     break;
 
   case 35:
 #line 162 "analizadorSintactico.y"
-                                   {(yyval.num) = (yyvsp[-2].num) - (yyvsp[0].num);}
-#line 1616 "analizadorSintactico.tab.c"
-    break;
-
-  case 36:
-#line 163 "analizadorSintactico.y"
-                                   {(yyval.num) = (yyvsp[-2].num) * (yyvsp[0].num);}
+                                            {if(fabs((yyvsp[-2].num)-(yyvsp[0].num))<=0.00001 && !isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("True\n");
+                                      }else if(!isnan((yyvsp[-2].num)) && !isnan((yyvsp[0].num))){printf("False\n");}else{
+                                      yyerror("Error sintáctico en la igualdad");
+                                      }(yyval.num)=NAN;}
 #line 1622 "analizadorSintactico.tab.c"
     break;
 
-  case 37:
-#line 164 "analizadorSintactico.y"
-                                   {if((yyvsp[0].num)!=0){(yyval.num) = (yyvsp[-2].num) / (yyvsp[0].num);}else {yyerror("No se puede realizar una division con un 0 en el denominador");(yyval.num)=NAN;}}
+  case 36:
+#line 167 "analizadorSintactico.y"
+                                  {(yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num);}
 #line 1628 "analizadorSintactico.tab.c"
     break;
 
-  case 38:
-#line 165 "analizadorSintactico.y"
-                                   {(yyval.num) = (int)(yyvsp[-2].num) % (int)(yyvsp[0].num);}
+  case 37:
+#line 168 "analizadorSintactico.y"
+                                   {(yyval.num) = (yyvsp[-2].num) - (yyvsp[0].num);}
 #line 1634 "analizadorSintactico.tab.c"
     break;
 
-  case 39:
-#line 166 "analizadorSintactico.y"
-                                   {(yyval.num)=-(yyvsp[0].num);}
+  case 38:
+#line 169 "analizadorSintactico.y"
+                                   {(yyval.num) = (yyvsp[-2].num) * (yyvsp[0].num);}
 #line 1640 "analizadorSintactico.tab.c"
     break;
 
-  case 40:
-#line 167 "analizadorSintactico.y"
-                                   {(yyval.num)=(yyvsp[0].num);}
+  case 39:
+#line 170 "analizadorSintactico.y"
+                                   {if((yyvsp[0].num)!=0){(yyval.num) = (yyvsp[-2].num) / (yyvsp[0].num);}else {yyerror("No se puede realizar una division con un 0 en el denominador");(yyval.num)=NAN;}}
 #line 1646 "analizadorSintactico.tab.c"
     break;
 
+  case 40:
+#line 171 "analizadorSintactico.y"
+                                   {(yyval.num) = (int)(yyvsp[-2].num) % (int)(yyvsp[0].num);}
+#line 1652 "analizadorSintactico.tab.c"
+    break;
+
   case 41:
-#line 169 "analizadorSintactico.y"
-                                          {if(existe_id((yyvsp[-3].lexema),FUNC)){
-                                            (yyval.num) = ejecutaFuncionUnParametro((yyvsp[-3].lexema),(yyvsp[-1].num));
-                                          }else yyerror("Esta funcion no existe");free((yyvsp[-3].lexema));}
-#line 1654 "analizadorSintactico.tab.c"
+#line 172 "analizadorSintactico.y"
+                                   {(yyval.num)=-(yyvsp[0].num);}
+#line 1658 "analizadorSintactico.tab.c"
     break;
 
   case 42:
-#line 172 "analizadorSintactico.y"
-                                                         {if(existe_id((yyvsp[-5].lexema),FUNC)){
-                                                     (yyval.num) = ejecutaFuncionDosParametro((yyvsp[-5].lexema),(yyvsp[-3].num),(yyvsp[-1].num));
-                                                   }else yyerror("Esta funcion no existe");free((yyvsp[-5].lexema));}
-#line 1662 "analizadorSintactico.tab.c"
+#line 173 "analizadorSintactico.y"
+                                   {(yyval.num)=(yyvsp[0].num);}
+#line 1664 "analizadorSintactico.tab.c"
     break;
 
   case 43:
 #line 175 "analizadorSintactico.y"
+                                          {if(existe_id((yyvsp[-3].lexema),FUNC)){
+                                            (yyval.num) = ejecutaFuncionUnParametro((yyvsp[-3].lexema),(yyvsp[-1].num));
+                                          }else yyerror("Esta funcion no existe");free((yyvsp[-3].lexema));}
+#line 1672 "analizadorSintactico.tab.c"
+    break;
+
+  case 44:
+#line 178 "analizadorSintactico.y"
+                                                         {if(existe_id((yyvsp[-5].lexema),FUNC)){
+                                                     (yyval.num) = ejecutaFuncionDosParametro((yyvsp[-5].lexema),(yyvsp[-3].num),(yyvsp[-1].num));
+                                                   }else yyerror("Esta funcion no existe");free((yyvsp[-5].lexema));}
+#line 1680 "analizadorSintactico.tab.c"
+    break;
+
+  case 45:
+#line 181 "analizadorSintactico.y"
                                    {if(existe_id("^",FUNC)){
                                                      (yyval.num) = ejecutaFuncionDosParametro("^",(yyvsp[-2].num),(yyvsp[0].num));
                                                    }else yyerror("Esta funcion no existe");}
-#line 1670 "analizadorSintactico.tab.c"
+#line 1688 "analizadorSintactico.tab.c"
     break;
 
 
-#line 1674 "analizadorSintactico.tab.c"
+#line 1692 "analizadorSintactico.tab.c"
 
       default: break;
     }
@@ -1902,7 +1920,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 178 "analizadorSintactico.y"
+#line 184 "analizadorSintactico.y"
 
 
 void yyerror(char* s){
@@ -1923,7 +1941,8 @@ void verAyuda(){
         "\t\"VerInfoTabla\": Muestra por pantalla el contenido de toda la tabla de simbolos\n"
         "\t\"leer\": Carga un script (tiene que usarse con el siguiente formato \"leer nombrescript\")\n"
         "\t\"clear\": Limpia el workspace en mitad de la ejecucion, destruyendo todas las variables declaradas\n"
-        "\t\"salir\": Termina la ejecucion del programa\n\n"
+        "\t\"salir\": Termina la ejecucion del programa\n"
+        "\t\"echo\": Con la opcion \"on\"/\"off\" activa y desactiva la impresion de texto\n\n"
         "\n----------COMPARACIONES-----------\n"
         "\n\tMayor >\n"
         "\tMayor igual >=\n"

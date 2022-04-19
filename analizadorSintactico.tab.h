@@ -43,7 +43,11 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+extern int yylex();
+void yyerror(char* s);
 void verAyuda();
+//variable to control the print
+extern int print;
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -58,18 +62,21 @@ void verAyuda();
     AYUDA = 263,
     LEER = 264,
     CLEAR = 265,
-    ASIGNACION = 266,
-    SUMA_ASIGNACION = 267,
-    MAS_MAS = 268,
-    MENOS_MENOS = 269,
-    RESTA_ASIGNACION = 270,
-    MULT_ASIGNACION = 271,
-    DIV_ASIGNACION = 272,
-    DESIGUALDAD = 273,
-    IGUALDAD = 274,
-    MENOR_IGUAL = 275,
-    MAYOR_IGUAL = 276,
-    NEG = 277
+    IMPRIMIR = 266,
+    ON = 267,
+    OFF = 268,
+    ASIGNACION = 269,
+    SUMA_ASIGNACION = 270,
+    MAS_MAS = 271,
+    MENOS_MENOS = 272,
+    RESTA_ASIGNACION = 273,
+    MULT_ASIGNACION = 274,
+    DIV_ASIGNACION = 275,
+    DESIGUALDAD = 276,
+    IGUALDAD = 277,
+    MENOR_IGUAL = 278,
+    MAYOR_IGUAL = 279,
+    NEG = 280
   };
 #endif
 
@@ -77,12 +84,12 @@ void verAyuda();
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 16 "analizadorSintactico.y"
+#line 18 "analizadorSintactico.y"
 
 double num;
 char *lexema;
 
-#line 85 "analizadorSintactico.tab.h"
+#line 88 "analizadorSintactico.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

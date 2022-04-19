@@ -10,6 +10,8 @@
 extern int yylex();
 void yyerror(char* s);
 void verAyuda();
+//variable to control the print
+extern int print;
 
 %}
 
@@ -29,6 +31,9 @@ char *lexema;
 %token  AYUDA
 %token  LEER
 %token  CLEAR
+%token  IMPRIMIR
+%token  ON
+%token  OFF
 
 %token  ASIGNACION
 %token  SUMA_ASIGNACION
@@ -71,15 +76,15 @@ char *lexema;
 
 
 %%
-input:   /**/ {printf(">>>>");}
+input:   /**/ {printf(">>>>");activarimpresion();}
         | input line
 ;
 
 line:
         '\n'
         | expresion '\n'{printf("\n>>>>");}
-            | expresion ';' '\n' {if(!isnan($1)){printf("%lf",$1);}printf("\n>>>>");}
-            | error{yyclearin;printf(">>>>");}
+            | expresion ';' '\n' {if(!isnan($1)){if(print){printf("%lf",$1);}printf("\n>>>>");}}
+            | error{yyclearin;if(print){printf(">>>>");}}
 ;
 
 expresion:
@@ -97,7 +102,8 @@ expresion:
               | '(' expresion ')' {$$ = $2;}
               | limpiar {$$=NAN;}
               | LEER ARCHIVO {printf("Ejecutando script %s\n",$2);leer($2);free($2);}
-
+              | IMPRIMIR ON {printf("Activando impresión\n");activarimpresion();}
+              | IMPRIMIR OFF {printf("Desactivando impresión\n");desactivarimpresion();}
 ;
 
 limpiar:  CLEAR {restauraEstado();}
@@ -195,7 +201,8 @@ void verAyuda(){
         "\t\"VerInfoTabla\": Muestra por pantalla el contenido de toda la tabla de simbolos\n"
         "\t\"leer\": Carga un script (tiene que usarse con el siguiente formato \"leer nombrescript\")\n"
         "\t\"clear\": Limpia el workspace en mitad de la ejecucion, destruyendo todas las variables declaradas\n"
-        "\t\"salir\": Termina la ejecucion del programa\n\n"
+        "\t\"salir\": Termina la ejecucion del programa\n"
+        "\t\"echo\": Con la opcion \"on\"/\"off\" activa y desactiva la impresion de texto\n\n"
         "\n----------COMPARACIONES-----------\n"
         "\n\tMayor >\n"
         "\tMayor igual >=\n"

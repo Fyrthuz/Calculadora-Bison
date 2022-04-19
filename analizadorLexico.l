@@ -6,6 +6,9 @@
 
 void leer(char *fichero);
 void cerrar();
+void activarimpresion();
+void desactivarimpresion();
+//declare flag to export to a bison file named imprimir
 
 %}
 
@@ -54,6 +57,12 @@ ARCHIVO ({CARACTER}|[0-9]|\.)+
 %x LECTURA
 
 %%
+
+"echo" return(IMPRIMIR);
+
+"off" return(OFF);
+
+"on"  return(ON);
 
 "salir" {yylex_destroy();yyterminate();}
 
@@ -104,10 +113,20 @@ ARCHIVO ({CARACTER}|[0-9]|\.)+
 {IGUALDAD}  return(IGUALDAD);
 
 . {errorLexico(yylineno);}
-<<EOF>> {cerrar();yyrestart(stdin);}
+<<EOF>> {cerrar();yyrestart(stdin);return'\n';}
 
 
 %%
+
+int print=1;
+
+void activarimpresion(){ 
+  print = 1;
+}
+
+void desactivarimpresion(){
+  print = 0;
+}
 
 void leer(char *fichero){
 
