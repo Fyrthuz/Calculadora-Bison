@@ -131,19 +131,23 @@ void desactivarimpresion(){
 
 void leer(char *file){
   fichero++;
-  if((ficheros[fichero] = fopen(file,"r"))==NULL){
-    fichero--;
-    errorArchivo(file);
+  if(fichero==1000){
+    errorNumeroFicheros();
+    for(int i=0;i<1000;i++){
+      fclose(ficheros[i]);
+      ficheros[i]='\0';
+    }
+    fichero=-1;
     yyin=stdin;
   }else{
-    if(fichero==1000){
-      errorNumeroFicheros();
-      for(int i=0;i<1000;i++){
+    if((ficheros[fichero] = fopen(file,"r"))==NULL){
+      fichero--;
+      errorArchivo(file);
+      yyin=stdin;
+      for(int i=0;i<fichero;i++){
         fclose(ficheros[i]);
-        ficheros[i]='\0';
       }
       fichero=-1;
-      yyin=stdin;
     }else{
       yyin=ficheros[fichero];
     }
