@@ -5,3 +5,5 @@ void errorArchivo(char *s);
 //FUncion que es utilizada cuando los parametros que se pasan por línea de comandos no
 //son válidos
 void errorParametros();
+
+void errorNumeroFicheros();

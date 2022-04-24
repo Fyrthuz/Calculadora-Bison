@@ -14,3 +14,7 @@ void errorParametros(){
   printf("\nIntroduzca únicamente un codigo fuente, el que quiere compilar\n\nParando ejecucion del programa...\n");
   exit(EXIT_FAILURE);
 }
+
+void errorNumeroFicheros(){
+  printf("\nNumero máximo de scripts abiertos simultáneamente excedido,cerrando todos los ficheros...\n");
+}

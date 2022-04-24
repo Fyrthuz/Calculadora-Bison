@@ -8,7 +8,6 @@ void leer(char *fichero);
 void cerrar();
 void activarimpresion();
 void desactivarimpresion();
-//declare flag to export to a bison file named imprimir
 
 %}
 
@@ -113,14 +112,16 @@ ARCHIVO ({CARACTER}|[0-9]|\.)+
 {IGUALDAD}  return(IGUALDAD);
 
 . {errorLexico(yylineno);}
-<<EOF>> {cerrar();yyrestart(stdin);return'\n';}
+<<EOF>> {cerrar();return'\n';}
 
 
 %%
+FILE *ficheros[1000];
+int fichero=-1;
 
 int print=1;
 
-void activarimpresion(){ 
+void activarimpresion(){
   print = 1;
 }
 
@@ -128,17 +129,37 @@ void desactivarimpresion(){
   print = 0;
 }
 
-void leer(char *fichero){
-
-  if((yyin = fopen(fichero,"r"))==NULL){
-    errorArchivo(fichero);
+void leer(char *file){
+  fichero++;
+  if((ficheros[fichero] = fopen(file,"r"))==NULL){
+    fichero--;
+    errorArchivo(file);
     yyin=stdin;
+  }else{
+    if(fichero==1000){
+      errorNumeroFicheros();
+      for(int i=0;i<1000;i++){
+        fclose(ficheros[i]);
+        ficheros[i]='\0';
+      }
+      fichero=-1;
+      yyin=stdin;
+    }else{
+      yyin=ficheros[fichero];
+    }
   }
 
 }
 
 
 void cerrar(){
-  fclose(yyin);
-  yyin = stdin;
+  fclose(ficheros[fichero]);
+  ficheros[fichero]='\0';
+  fichero--;
+  if(fichero==-1){
+    yyin=stdin;
+    yyrestart(stdin);
+  }else{
+    yyin=ficheros[fichero];
+  }
 }

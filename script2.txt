@@ -1,0 +1,4 @@
+a=5;
+leer script2.txt
+a=4;
+
