@@ -1,6 +1,7 @@
 cd /mnt/c/Users/PC/Desktop/3Informatica/2Cuatri/Compiladores/Practicas/Practica3/Codigo/
 bison -d -Wconflicts-sr analizadorSintactico.y
 flex --header-file="lex.yy.h" analizadorLexico.l
+para evitar warnings si compilas flex y bison, introducir en el .h de ambas ejecuciones las macros de las funciones declaradas
 make
 ./interpretematematico
 valgrind --leak-check=full -s ./interpretematematico
