@@ -83,8 +83,8 @@ input:   /**/ {printf(">>>>");activarimpresion();}
 line:
         '\n'
         | expresion '\n'{printf("\n>>>>");}
-            | expresion ';' '\n' {if(!isnan($1)){if(print){printf("%lf",$1);}printf("\n>>>>");}}
-            | error{yyclearin;if(print){printf(">>>>");}}
+            | expresion ';' '\n' {if(!isnan($1)){if(print){printf("%lf",$1);}}printf("\n>>>>");}
+            | error{if(print){printf(">>>>");}}
 ;
 
 expresion:

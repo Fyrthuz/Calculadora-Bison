@@ -1426,13 +1426,13 @@ yyreduce:
 
   case 6:
 #line 86 "analizadorSintactico.y"
-                                 {if(!isnan((yyvsp[-2].num))){if(print){printf("%lf",(yyvsp[-2].num));}printf("\n>>>>");}}
+                                 {if(!isnan((yyvsp[-2].num))){if(print){printf("%lf",(yyvsp[-2].num));}}printf("\n>>>>");}
 #line 1431 "analizadorSintactico.tab.c"
     break;
 
   case 7:
 #line 87 "analizadorSintactico.y"
-                   {yyclearin;if(print){printf(">>>>");}}
+                   {if(print){printf(">>>>");}}
 #line 1437 "analizadorSintactico.tab.c"
     break;
 

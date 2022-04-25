@@ -43,12 +43,7 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
-extern int yylex();
-void yyerror(char* s);
 void verAyuda();
-//variable to control the print
-extern int print;
-
 /* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
