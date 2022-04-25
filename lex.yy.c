@@ -1979,7 +1979,7 @@ void yyfree (void * ptr )
 
 #line 118 "analizadorLexico.l"
 
-FILE *ficheros[1000];
+FILE *ficheros[100];
 int fichero=-1;
 
 int print=1;
@@ -1994,9 +1994,9 @@ void desactivarimpresion(){
 
 void leer(char *file){
   fichero++;
-  if(fichero==1000){
+  if(fichero==100){
     errorNumeroFicheros();
-    for(int i=0;i<1000;i++){
+    for(int i=0;i<100;i++){
       fclose(ficheros[i]);
       ficheros[i]='\0';
     }
