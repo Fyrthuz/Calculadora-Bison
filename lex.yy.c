@@ -556,11 +556,12 @@ void leer(char *fichero);
 void cerrar();
 void activarimpresion();
 void desactivarimpresion();
+void cerrar_ficheros();
 
-#line 561 "lex.yy.c"
+#line 562 "lex.yy.c"
 #define YY_NO_INPUT 1
 
-#line 564 "lex.yy.c"
+#line 565 "lex.yy.c"
 
 #define INITIAL 0
 #define LECTURA 1
@@ -776,10 +777,10 @@ YY_DECL
 		}
 
 	{
-#line 58 "analizadorLexico.l"
+#line 59 "analizadorLexico.l"
 
 
-#line 783 "lex.yy.c"
+#line 784 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -848,52 +849,52 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 60 "analizadorLexico.l"
+#line 61 "analizadorLexico.l"
 return(IMPRIMIR);
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 62 "analizadorLexico.l"
+#line 63 "analizadorLexico.l"
 return(OFF);
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 64 "analizadorLexico.l"
+#line 65 "analizadorLexico.l"
 return(ON);
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 66 "analizadorLexico.l"
-{yylex_destroy();yyterminate();}
+#line 67 "analizadorLexico.l"
+{cerrar_ficheros();yylex_destroy();yyterminate();}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 68 "analizadorLexico.l"
+#line 69 "analizadorLexico.l"
 return(VARIABLES);
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 70 "analizadorLexico.l"
+#line 71 "analizadorLexico.l"
 return(TABLA);
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 72 "analizadorLexico.l"
+#line 73 "analizadorLexico.l"
 return(AYUDA);
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 74 "analizadorLexico.l"
+#line 75 "analizadorLexico.l"
 {BEGIN(LECTURA); return(LEER);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 76 "analizadorLexico.l"
+#line 77 "analizadorLexico.l"
 return(CLEAR);
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 78 "analizadorLexico.l"
+#line 79 "analizadorLexico.l"
 {
                       yylval.lexema = (char *)malloc(strlen(yytext)+1);
                       strncpy(yylval.lexema,yytext,strlen(yytext));
@@ -905,17 +906,17 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 86 "analizadorLexico.l"
+#line 87 "analizadorLexico.l"
 return((int)*yytext);
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 88 "analizadorLexico.l"
+#line 89 "analizadorLexico.l"
 
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 90 "analizadorLexico.l"
+#line 91 "analizadorLexico.l"
 {
                                   yylval.lexema = (char *)malloc((strlen(yytext)+1)*sizeof(char));
                                   strncpy(yylval.lexema,yytext,strlen(yytext));
@@ -925,85 +926,85 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 98 "analizadorLexico.l"
+#line 99 "analizadorLexico.l"
 {yylval.num = atof(yytext);return(NUM);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 101 "analizadorLexico.l"
+#line 102 "analizadorLexico.l"
 return(((int)*yytext));
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 102 "analizadorLexico.l"
+#line 103 "analizadorLexico.l"
 return(ASIGNACION);
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 103 "analizadorLexico.l"
+#line 104 "analizadorLexico.l"
 return(SUMA_ASIGNACION);
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 104 "analizadorLexico.l"
+#line 105 "analizadorLexico.l"
 return(RESTA_ASIGNACION);
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 105 "analizadorLexico.l"
+#line 106 "analizadorLexico.l"
 return(MULT_ASIGNACION);
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 106 "analizadorLexico.l"
+#line 107 "analizadorLexico.l"
 return(DIV_ASIGNACION);
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 107 "analizadorLexico.l"
+#line 108 "analizadorLexico.l"
 return(MAS_MAS);
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 108 "analizadorLexico.l"
+#line 109 "analizadorLexico.l"
 return(MENOS_MENOS);
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 109 "analizadorLexico.l"
+#line 110 "analizadorLexico.l"
 return(MAYOR_IGUAL);
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 110 "analizadorLexico.l"
+#line 111 "analizadorLexico.l"
 return(MENOR_IGUAL);
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 111 "analizadorLexico.l"
+#line 112 "analizadorLexico.l"
 return(DESIGUALDAD);
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 112 "analizadorLexico.l"
+#line 113 "analizadorLexico.l"
 return(IGUALDAD);
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 114 "analizadorLexico.l"
+#line 115 "analizadorLexico.l"
 {errorLexico(yylineno);}
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(LECTURA):
-#line 115 "analizadorLexico.l"
+#line 116 "analizadorLexico.l"
 {cerrar();return'\n';}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 118 "analizadorLexico.l"
+#line 119 "analizadorLexico.l"
 ECHO;
 	YY_BREAK
-#line 1007 "lex.yy.c"
+#line 1008 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1977,12 +1978,21 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 118 "analizadorLexico.l"
+#line 119 "analizadorLexico.l"
 
 FILE *ficheros[100];
 int fichero=-1;
 
 int print=1;
+
+void cerrar_ficheros(){
+  while(fichero!=-1){
+    fclose(ficheros[fichero]);
+    fichero--;
+  }
+
+}
+
 
 void activarimpresion(){
   print = 1;

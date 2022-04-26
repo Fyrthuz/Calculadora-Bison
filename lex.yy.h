@@ -15,7 +15,11 @@
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
 #endif
-
+void leer(char *fichero);
+void cerrar();
+void activarimpresion();
+void desactivarimpresion();
+void cerrar_ficheros();
 /* First, we deal with  platform-specific or compiler-specific issues. */
 
 /* begin standard C headers. */
@@ -36,7 +40,7 @@
 #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
 /* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
- * if you want the limit (max/min) macros for int types. 
+ * if you want the limit (max/min) macros for int types.
  */
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS 1
@@ -53,7 +57,7 @@ typedef uint32_t flex_uint32_t;
 typedef signed char flex_int8_t;
 typedef short int flex_int16_t;
 typedef int flex_int32_t;
-typedef unsigned char flex_uint8_t; 
+typedef unsigned char flex_uint8_t;
 typedef unsigned short int flex_uint16_t;
 typedef unsigned int flex_uint32_t;
 
@@ -468,7 +472,7 @@ extern int yylex (void);
 #undef yyTABLES_NAME
 #endif
 
-#line 118 "analizadorLexico.l"
+#line 119 "analizadorLexico.l"
 
 
 #line 475 "lex.yy.h"

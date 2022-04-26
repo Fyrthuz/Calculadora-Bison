@@ -1,3 +1,4 @@
 a=5;
-leer script2.txt
+leer script.txt
+salir
 a=4;

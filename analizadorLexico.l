@@ -8,6 +8,7 @@ void leer(char *fichero);
 void cerrar();
 void activarimpresion();
 void desactivarimpresion();
+void cerrar_ficheros();
 
 %}
 
@@ -63,7 +64,7 @@ ARCHIVO ({CARACTER}|[0-9]|\.)+
 
 "on"  return(ON);
 
-"salir" {yylex_destroy();yyterminate();}
+"salir" {cerrar_ficheros();yylex_destroy();yyterminate();}
 
 "verVariables"  return(VARIABLES);
 
@@ -120,6 +121,15 @@ FILE *ficheros[100];
 int fichero=-1;
 
 int print=1;
+
+void cerrar_ficheros(){
+  while(fichero!=-1){
+    fclose(ficheros[fichero]);
+    fichero--;
+  }
+
+}
+
 
 void activarimpresion(){
   print = 1;
