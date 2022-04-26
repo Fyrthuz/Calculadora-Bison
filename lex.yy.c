@@ -1980,6 +1980,7 @@ void yyfree (void * ptr )
 
 #line 119 "analizadorLexico.l"
 
+//Pila de ficheros, permite ejecutar scripts desde otros scripts
 FILE *ficheros[100];
 int fichero=-1;
 

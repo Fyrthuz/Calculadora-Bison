@@ -117,6 +117,7 @@ ARCHIVO ({CARACTER}|[0-9]|\.)+
 
 
 %%
+//Pila de ficheros, permite ejecutar scripts desde otros scripts
 FILE *ficheros[100];
 int fichero=-1;
 
