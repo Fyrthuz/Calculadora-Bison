@@ -104,6 +104,9 @@ expresion:
               | LEER ARCHIVO {printf("Ejecutando script %s\n",$2);leer($2);free($2);}
               | IMPRIMIR ON {printf("Activando impresión\n");activarimpresion();}
               | IMPRIMIR OFF {printf("Desactivando impresión\n");desactivarimpresion();}
+              | ON  {yyerror("SyntaxError");}
+              | OFF {yyerror("SyntaxError");}
+              | IMPRIMIR {yyerror("SyntaxError");}
 ;
 
 limpiar:  CLEAR {restauraEstado();}
